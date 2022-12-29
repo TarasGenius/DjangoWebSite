@@ -17,20 +17,33 @@ from django.contrib import admin
 from django.http import HttpResponse
 from django.urls import path
 
+
+class First:
+    def __init__(self, stri):
+        self.stri = stri
+
+    def get(self):
+        return self.stri
+
+test_t = First('test/')
+test_main_t = First('test/main')
+test_main_home_python = First('main_page/home/python')
+
+
 def test(request):
-    return HttpResponse('"<h1> test </n>')
+    return HttpResponse('<h1> test </h1>')
 
 def test_main(request):
-    return HttpResponse('"<h1> test/main </n>')
+    return HttpResponse('<h1> test/main </h1>')
 
 def main_page_home_python(request):
-    return HttpResponse('"<h1> main_page/home/python </n>')
+    return HttpResponse('<h1> main_page/home/python </h1>')
 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('test/', test),
-    path('test/main', test_main),
-    path('main_page/home/python', main_page_home_python),
+    path(test_t.get(), test),
+    path(test_main_t.get(), test_main),
+    path(test_main_home_python.get(), main_page_home_python),
 
 ]
