@@ -15,7 +15,9 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.http import HttpResponse
-from django.urls import path
+from django.urls import path, include
+from Blog.views import home_page
+
 
 
 class First:
@@ -40,10 +42,14 @@ def main_page_home_python(request):
     return HttpResponse('<h1> main_page/home/python </h1>')
 
 
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path(test_t.get(), test),
     path(test_main_t.get(), test_main),
     path(test_main_home_python.get(), main_page_home_python),
+    path('', home_page),
+    path('Blog/', include('Blog.urls')), # Перепідключення окремих Юрл для різник аплікацій(5 завдання)
+    path('Shop/', include('Shop.urls')), # Перепідключення окремих Юрл для різник аплікацій(5 завдання)
 
 ]
