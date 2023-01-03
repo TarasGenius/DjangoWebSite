@@ -1,0 +1,34 @@
+
+.header-wrapper {
+    height: 150px;
+    background-color: black;
+    line-height: 10px;
+    color: beige;
+    text-align: center;
+    font-size: 60px;
+    padding-bottom: 10px;
+    padding-top: 1px;
+
+}
+
+.main-wrapper {
+    display: flex;
+    font-size: 30px;
+
+}
+
+.img-wrapper {
+    padding-left: 11px;
+    padding-right: 11px;
+}
+
+.title-goods{
+    display: block;
+    width: 200px;
+    height: 80px;
+    text-decoration: none;
+    background-color: black;
+    color: beige;
+    line-height: 80px;
+    text-align: center;
+}
