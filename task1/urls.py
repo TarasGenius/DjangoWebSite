@@ -14,40 +14,11 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.http import HttpResponse
 from django.urls import path, include
 from Blog.views import home_page
 
-
-
-class First:
-    def __init__(self, stri):
-        self.stri = stri
-
-    def get(self):
-        return self.stri
-
-test_t = First('test/')
-test_main_t = First('test/main')
-test_main_home_python = First('main_page/home/python')
-
-
-def test(request):
-    return HttpResponse('<h1> test </h1>')
-
-def test_main(request):
-    return HttpResponse('<h1> test/main </h1>')
-
-def main_page_home_python(request):
-    return HttpResponse('<h1> main_page/home/python </h1>')
-
-
-
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path(test_t.get(), test),
-    path(test_main_t.get(), test_main),
-    path(test_main_home_python.get(), main_page_home_python),
     path('', home_page),
     path('Blog/', include('Blog.urls')), # Перепідключення окремих Юрл для різник аплікацій(5 завдання)
     path('Shop/', include('Shop.urls')), # Перепідключення окремих Юрл для різник аплікацій(5 завдання)

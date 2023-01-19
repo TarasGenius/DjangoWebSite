@@ -4,21 +4,33 @@
     <meta charset="UTF-8">
     <title>Ditail</title>
     <link rel="stylesheet" href="for_detail.css">
+    <link rel="stylesheet" href="for_navigations.css">
 </head>
 <body>
     <div class="body">
         <div class="body-container">
-            <h1 class="title">Назва товару</h1>
-            <p class="description">Опис товару його тут багато</p>
+            <h1 class="title">{{ object.title }}</h1>
+            <p class="description">{{ object.description}}</p>
             <div class="buy-wrapper">
                 <a class="buy" href="shop%20buy.html">Купити</a>
-                <div class="price">Ціна$</div>
+                <div class="price">{{ object.price}}</div>
             </div>
         </div>
         <div class="img">
-            <p>Унікальний ід товару ...</p>
+            <p>Унікальний ід товару {{ object.id }}</p>
             <img src="imeges/jaket_second_attempt.jpg" alt="Картинка товару">
         </div>
     </div>
+<footer>
+        <div class="navi-wrapper">
+            <a class="navigation-href" href="#" onclick="history.back();return false;">Назад</a>
+
+
+            <a class="navigation-href" href="http://127.0.0.1:8000/">На головну</a>
+
+
+            <a class="navigation-href" href="category/">Категорії</a>
+        </div>
+    </footer>
 </body>
 </html>

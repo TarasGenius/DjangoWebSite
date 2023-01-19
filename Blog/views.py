@@ -3,7 +3,7 @@ from django.http import HttpResponse
 
 
 def home_page(request):
-    return HttpResponse('<h1>Home_page</h1>')
+    return render(request, 'index.html')
 
 
 def post_list(request):

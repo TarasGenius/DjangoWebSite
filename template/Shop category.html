@@ -3,31 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <title>{{ title }}</title>
-    <link rel="stylesheet" href="for_list.css">
     <link rel="stylesheet" href="for_navigations.css">
 </head>
 <body>
-    <heder>
+     <heder>
         <div class="header-wrapper">
             <h1 class="title">Назва магазину</h1>
         </div>
     </heder>
-    <div>
-        <main>
-            <div class="main-wrapper">
-                {% for i in object %}
-                <div class="img-wrapper">
-                    <img class="img" src="imeges/jaket_second_attempt.jpg" alt="картинка товару">
-                    <a class="title-goods" href="{{ i.get_absolut_url }}">{{ i.title }}</a>
-                </div>
-
-                {% endfor %}
-            <div
-
-            </div>
-        </main>
+    <div class="img-wrapper">
+        <img class="img" src="imeges/jaket_second_attempt.jpg" alt="Загальна картинка каьегорії">
+        <a class="title-goods" href="">Ноутбуки</a>
     </div>
-    <footer>
+    <div class="img-wrapper">
+        <img class="img" src="imeges/jaket_second_attempt.jpg" alt="Загальна картинка каьегорії">
+        <a class="title-goods" href="">Комп'ютери</a>
+    </div>
+<footer>
         <div class="navi-wrapper">
             <a class="navigation-href" href="#" onclick="history.back();return false;">Назад</a>
 
@@ -37,6 +29,8 @@
 
             <a class="navigation-href" href="category/">Категорії</a>
         </div>
-    </footer>
+</footer>
+
+
 </body>
 </html>
