@@ -17,7 +17,12 @@ class Goods(models.Model):
 
     def get_absolut_url(self):
 
-        return f'detail/{self.id}'
+        return f'/Shop/detail/{self.id}'
 
+    def get_list_topic(self):
+        lst = []
+        for i in self.choices_list:
+            lst.append(i[0])
+        return lst
     def __str__(self):
         return self.title
