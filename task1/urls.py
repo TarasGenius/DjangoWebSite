@@ -20,7 +20,7 @@ from Blog.views import home_page
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', home_page),
-    path('Blog/', include('Blog.urls')), # Перепідключення окремих Юрл для різник аплікацій(5 завдання)
-    path('Shop/', include('Shop.urls')), # Перепідключення окремих Юрл для різник аплікацій(5 завдання)
+    path('blog/', include('Blog.urls')), # Перепідключення окремих Юрл для різник аплікацій(5 завдання)
+    path('shop/', include('Shop.urls')), # Перепідключення окремих Юрл для різник аплікацій(5 завдання)
 
 ]
