@@ -2,6 +2,7 @@ from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponse, HttpResponseRedirect
 from Shop.models import Goods
 from Shop.forms import GoodsForm
+from django.contrib import messages
 
 
 
@@ -42,11 +43,28 @@ def goods_create(request):
     if form.is_valid():
         instance = form.save(commit=False)
         instance.save()
-        return HttpResponseRedirect('/Shop/category')
+        messages.success(request, 'Item saved')
+        return HttpResponseRedirect(instance.get_absolut_url())
     context = {
         'title': 'Goods Create',
         'form': form
 
+
+    }
+    return render(request, 'shop create.html', context)
+
+def goods_update(request, id=None):
+    instance = get_object_or_404(Goods, id=id)
+    form = GoodsForm(request.POST or None,
+                     instance=instance)
+    if form.is_valid():
+        instance = form.save(commit=False)
+        instance.save()
+        messages.success(request, 'Item saved')
+        return HttpResponseRedirect(instance.get_absolut_url())
+    context = {
+        'title': 'Goods Create',
+        'form': form
 
     }
     return render(request, 'shop create.html', context)

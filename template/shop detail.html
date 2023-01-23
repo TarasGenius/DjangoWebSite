@@ -7,6 +7,15 @@
     <link rel="stylesheet" href="for_navigations.css">
 </head>
 <body>
+    {% if messages %}
+        <ul class="messages">
+            {% for message in messages %}
+                <li{% if message.tags %} class="{{ message.tags }} " {% endif %}>
+                    {{ message }}<a href="/Shop/category">Категорії / </a><a href="/Shop/create">Новий / </a>
+                    <a href="/Shop/">Головна</a></li>
+            {% endfor %}
+        </ul>
+    {% endif %}
     <div class="body">
         <div class="body-container">
             <h1 class="title">{{ object.title }}</h1>
