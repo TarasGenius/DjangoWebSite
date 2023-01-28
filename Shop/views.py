@@ -40,11 +40,13 @@ def shop_category(request):
 
 def goods_create(request):
     form = GoodsForm(request.POST or None)
-    if form.is_valid():
+    if form.is_valid() and 'Create' in request.POST:
         instance = form.save(commit=False)
         instance.save()
         messages.success(request, 'Item saved')
         return HttpResponseRedirect(instance.get_absolut_url())
+    elif 'Delete' in request.POST:
+        messages.success(request, 'You can use delete only in update')
     context = {
         'title': 'Goods Create',
         'form': form
@@ -64,6 +66,7 @@ def goods_update(request, id=None):
         return HttpResponseRedirect(instance.get_absolut_url())
     elif 'Delete' in request.POST:
         instance.delete()
+        messages.success(request, 'Item Deleted')
         return redirect('shop:shop_list')
     context = {
         'title': 'Goods update',
