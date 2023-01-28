@@ -1,21 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Ditail</title>
-    <link rel="stylesheet" href="for_detail.css">
-    <link rel="stylesheet" href="for_navigations.css">
-</head>
-<body>
-    {% if messages %}
-        <ul class="messages">
-            {% for message in messages %}
-                <li{% if message.tags %} class="{{ message.tags }} " {% endif %}>
-                    {{ message }}<a href="/shop/category">Категорії / </a><a href="/shop/create">Новий / </a>
-                    <a href="/shop/">Головна</a></li>
-            {% endfor %}
-        </ul>
-    {% endif %}
+{% extends 'base.html' %}
+
+{% block content %}
     <div class="body">
         <div class="body-container">
             <h1 class="title">{{ object.title }}</h1>
@@ -30,16 +15,4 @@
             <img src="imeges/jaket_second_attempt.jpg" alt="Картинка товару">
         </div>
     </div>
-<footer>
-        <div class="navi-wrapper">
-            <a class="navigation-href" href="#" onclick="history.back();return false;">Назад</a>
-
-
-            <a class="navigation-href" href="http://127.0.0.1:8000/">На головну</a>
-
-
-            <a class="navigation-href" href="/shop/category/">Категорії</a>
-        </div>
-    </footer>
-</body>
-</html>
+{% endblock content %}

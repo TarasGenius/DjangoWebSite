@@ -1,4 +1,4 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 from django.http import HttpResponse, HttpResponseRedirect
 from Shop.models import Goods
 from Shop.forms import GoodsForm
@@ -57,14 +57,18 @@ def goods_update(request, id=None):
     instance = get_object_or_404(Goods, id=id)
     form = GoodsForm(request.POST or None,
                      instance=instance)
-    if form.is_valid():
+    if form.is_valid() and 'Create' in request.POST:
         instance = form.save(commit=False)
         instance.save()
         messages.success(request, 'Item saved')
         return HttpResponseRedirect(instance.get_absolut_url())
+    elif 'Delete' in request.POST:
+        instance.delete()
+        return redirect('shop:shop_list')
     context = {
-        'title': 'Goods Create',
+        'title': 'Goods update',
         'form': form
+
 
     }
     return render(request, 'shop create.html', context)

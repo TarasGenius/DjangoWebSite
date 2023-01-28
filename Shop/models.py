@@ -24,5 +24,6 @@ class Goods(models.Model):
         for i in self.choices_list:
             lst.append(i[0])
         return lst
+
     def __str__(self):
         return self.title

@@ -1,12 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Buy</title>
-    <link rel="stylesheet" href="for_buy.css">
-    <link rel="stylesheet" href="for_navigations.css">
-</head>
-<body>
+{% extends 'base.html' %}
+
+{% block content %}
     <div class="body">
         <h1>Назва товару</h1>
         <div>
@@ -23,16 +17,4 @@
 
         </div>
     </div>
-<footer>
-        <div class="navi-wrapper">
-            <a class="navigation-href" href="#" onclick="history.back();return false;">Назад</a>
-
-
-            <a class="navigation-href" href="http://127.0.0.1:8000/">На головну</a>
-
-
-            <a class="navigation-href" href="/shop/category/">Категорії</a>
-        </div>
-</footer>
-</body>
-</html>
+{% endblock content %}
