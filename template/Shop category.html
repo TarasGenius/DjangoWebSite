@@ -2,9 +2,14 @@
 
 {% block content %}
      {% for i in topic_list %}
-         <div class="img-wrapper">
-         <img class="img" src="imeges/jaket_second_attempt.jpg" alt="Загальна картинка каьегорії">
-         <a class="title-goods" href="">{{ i }}</a> <! Поки нікуди не веде>
+         <div class="container text-center">
+             <div class="card" style="width: 18rem;">
+                 <img class="card-img-top" src="imeges/jaket_second_attempt.jpg" alt="Загальна картинка каьегорії">
+                 <div class="card-body">
+                     <h5 class="card-title">Category</h5>
+                     <a class="btn btn-primary stretched-link" href="#">{{ i }}</a> <! Поки нікуди не веде>
+                 </div>
+             </div>
          </div>
      {% endfor %}
 {% endblock content %}

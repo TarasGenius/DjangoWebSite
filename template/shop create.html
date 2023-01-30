@@ -1,10 +1,17 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<form action="" method="POST">
-    {% csrf_token %}
-    {{ form.as_div }}
-    <input type="submit" value="Create" name="Create">
-    <input type="submit" value="Delete" name="Delete">
-</form>
+<div class="container text-center">
+    <form action="" method="POST">
+        {% csrf_token %}
+        {%   for field in form %}
+            <div class="mb-3">
+                <lable class="form-label">{{ field.label|linebreaks }}</lable>
+                {{ field }}
+            </div>
+        {% endfor %}
+        <input type="submit" class="btn btn-success" value="Create" name="Create">
+        <input type="submit" class="btn btn-danger" value="Delete" name="Delete">
+    </form>
+</div>
 {% endblock content %}
