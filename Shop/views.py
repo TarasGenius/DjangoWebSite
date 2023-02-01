@@ -3,14 +3,24 @@ from django.http import HttpResponse, HttpResponseRedirect
 from Shop.models import Goods
 from Shop.forms import GoodsForm
 from django.contrib import messages
-
+from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 
 
 def shop_list(request):
-    a = Goods.objects.all()
+    queryset = Goods.objects.all()
+    paginator = Paginator(queryset, 2)
+    page_request_var = 'page'
+    page = request.GET.get(page_request_var)
+    try:
+        queryset = paginator.page(page)
+    except PageNotAnInteger:
+        queryset = paginator.page(1)
+    except EmptyPage:
+        queryset = paginator.page(paginator.num_pages)
     context = {
         'title': 'Shop List',
-        'object': a
+        'object': queryset,
+        'page_request_var': page_request_var
 
     }
     return render(request, 'shop list.html', context)
@@ -24,8 +34,10 @@ def shop_detail(request, id=None):
     }
     return render(request, 'shop detail.html', context)
 
+
 def shop_buy(request):
     return HttpResponse('<h1>Shop_buy</h1>')
+
 
 def shop_category(request):
     instance = Goods.objects.all()
@@ -38,15 +50,19 @@ def shop_category(request):
     }
     return render(request, 'Shop category.html', context)
 
+
 def goods_create(request):
     form = GoodsForm(request.POST or None)
-    if form.is_valid() and 'Create' in request.POST:
+
+    if 'Delete' in request.POST:
+        messages.success(request, 'You can use delete only in update')
+
+    elif form.is_valid() and 'Create' in request.POST:
         instance = form.save(commit=False)
         instance.save()
         messages.success(request, 'Item saved')
         return HttpResponseRedirect(instance.get_absolut_url())
-    elif 'Delete' in request.POST:
-        messages.success(request, 'You can use delete only in update')
+
     context = {
         'title': 'Goods Create',
         'form': form
@@ -54,6 +70,7 @@ def goods_create(request):
 
     }
     return render(request, 'shop create.html', context)
+
 
 def goods_update(request, id=None):
     instance = get_object_or_404(Goods, id=id)

@@ -8,8 +8,23 @@
                 <div class="col">
                     <a class="title-goods" href="{{ i.get_absolut_url }}"><img class="rounded mx-auto d-block" src="imeges/200x200.png" alt="картинка товару">{{ i.title }}</a>
                 </div>
-            {% endfor %}s
+            {% endfor %}
         </div>
+    </div>
+    <div class="container text-center" style="margin-top: 100px">
+        <nav aria-label="Page navigati  on example">
+            <ul class="pagination">
+                {% if object.has_previous %}
+                    <li class="page-item"><a class="page-link" href="?{{ page_request_var }}={{ object.previous_page_number }}">Previous</a></li>
+                {% endif %}
+                {% for i in object.paginator.page_range %}
+                    <li class="page-item"><a class="page-link" href="?{{ page_request_var }}={{ i }}">{{ i }}</a></li>
+                {% endfor %}
+                {% if object.has_next %}
+                    <li class="page-item"><a class="page-link" href="?{{ page_request_var }}={{ object.next_page_number }}">Next</a></li>
+                {% endif %}
+            </ul>
+        </nav>
     </div>
 </main>
 {% endblock content %}
